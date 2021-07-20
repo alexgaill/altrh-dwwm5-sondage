@@ -1,0 +1,18 @@
+{{ form_start(form) }}
+    {{form_errors(form, {"attr": {"class": "list-group"}})}}
+    <div class="mb-3">
+        {{ form_row(form.titre) }}
+        <div class="mb-1">
+        {{form_help(form.titre)}}
+        </div>
+    </div>
+    <div class="mb-3">
+        {{ form_row(form.question) }}
+        <div class="mb-1">
+        {{form_help(form.question)}}
+        </div>
+    </div>
+    <div class="mb-3">
+        {{ form_widget(form.Ajouter) }}
+    </div>
+{{ form_end(form) }}

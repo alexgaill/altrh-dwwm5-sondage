@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+<div class="container mx-auto mt-5">
+    {{ form_start(form) }}
+        <div class="mb-3">
+            {{ form_row(form.titre) }}
+            <div class="mb-1">
+            {{form_errors(form, {"attr": {"class": "list-group"}})}}
+            {{form_help(form.titre)}}
+            </div>
+        </div>
+        <div class="mb-3">
+            {{ form_widget(form.Ajouter) }}
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

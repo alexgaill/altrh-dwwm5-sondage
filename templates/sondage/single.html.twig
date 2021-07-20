@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+<div class="container mx-auto text-center">
+    <h1>{{sondage.titre}}</h1>
+
+    {% for question in sondage.questions %}
+        <div class="card" width="8rem">
+            <div class="card-header">
+                <h3>{{question.titre}}</h3>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for reponse in question.reponses %}
+                        {% if reponse.highScore == true %}
+                            <li class="list-group-item list-group-item-success">{{reponse.titre}}| <strong>Score:</strong> {{ reponse.score }} | <a href="{{path("upScore", {id: reponse.id, sondageId: sondage.id})}}"><button class="btn btn-info">Sélectionner</button></a></li>
+                        {% else %}
+                            <li class="list-group-item list-group-item-secondary">{{reponse.titre}}| <strong>Score:</strong> {{ reponse.score }} | <a href="{{path("upScore", {id: reponse.id, sondageId: sondage.id})}}"><button class="btn btn-info">Sélectionner</button></a></li>  
+                        {% endif %}
+                    {% else %}
+                        <li class="list-group-item list-group-item-info"> Pas de réponse pour le moment</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% else %}
+        <h2>Ce sondage n'a pas encore de question.</h2>
+    {% endfor %}
+</div>
+{% endblock %}

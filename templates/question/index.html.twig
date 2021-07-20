@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des sondages{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <div>
+            <h1>Voici la liste des questions que nous proposons.</h1>
+            <p>Sélectionnez celui qui vous intéresse et répondez aux questions.</p>
+        </div>
+        <div class="mt-5">
+            <table class="table table-striped table-hover table-primary">
+                <thead>
+                    <tr>
+                        <th>Titre de la question</th>
+                        <th>Participer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for question in questions %}
+                        <tr>
+                            <td>{{question.titre}}</td>
+                            <td><a href="{{ path("updateQuestion", {id: question.id})}}"><button class="btn btn-info">Modifier</button></a></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="2" class="text-center">Pas de question de disponible pour le moment.</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="2"><a class="nav-link text-light" href="{{ path("createQuestion")}}"><button class="btn btn-primary"> Ajouter Question</button></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
